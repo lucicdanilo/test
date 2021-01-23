@@ -33,7 +33,7 @@
                 <textarea class="form-control" id="comment" name="text" rows="3"></textarea>
             </div>
             <div class="col-12">
-                <button class="btn btn-primary" type="submit">Submit form</button>
+                <button class="btn btn-primary" type="submit">Add comment</button>
             </div>
         </form>
     </div>

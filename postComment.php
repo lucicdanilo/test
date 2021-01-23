@@ -13,5 +13,8 @@ if (empty($formData['name']) ||
     echo $formData['name'];
     echo $formData['email'];
     echo $formData['text']; 
+
+    $db->query('INSERT INTO Comments(name, email, text, approved) VALUES ("'.$formData["name"].'", "'.$formData["email"].'", "'.$formData["text"].'", 0)');
+
 }
 ?>
