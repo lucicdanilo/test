@@ -1,7 +1,7 @@
 <?php
 include 'db.php';
 
-foreach($dbh->query('SELECT * from Products') as $row) {
+foreach($db->query('SELECT * from Products') as $row) {
 echo "
     <div class='card' style='width: 18rem;'>
         <img src='...' class='card-img-top' alt=''>
