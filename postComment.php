@@ -6,13 +6,10 @@ if (empty($formData['name']) ||
     empty($formData['email']) ||
     empty($formData['text'])) 
 {    
-    echo 'Please populate all fields!';
+    echo 'Please fill in all fields. Thanks!';
 }else{
 
-    echo 'Insert into DB';
-    echo $formData['name'];
-    echo $formData['email'];
-    echo $formData['text']; 
+    echo 'You added a comment successfully. Thank You for Your time!';
 
     $db->query('INSERT INTO Comments(name, email, text, approved) VALUES ("'.$formData["name"].'", "'.$formData["email"].'", "'.$formData["text"].'", 0)');
 

@@ -12,14 +12,14 @@
     <h1>Wellcome to our store!</h1>
 
     <div class="container">
-        <?php include 'Products.php';?>
+        <?php include '../Products.php';?>
     </div>
     <div class="container">
-        <?php include 'Comments.php';?>
+        <?php include '../Comments.php';?>
     </div>
 
     <div class="container">
-        <form action="postComment.php" method="post">
+        <form action="../postComment.php" method="post" name="postComment">
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="John">

@@ -6,7 +6,7 @@ foreach($db->query('SELECT * from Comments WHERE approved = 1') as $row){
     <div class='comments'>
         <div>" . $row['name'] . "</div>
         <div>" . $row['email'] . "</div>
-        <div>" . $row['text'] . "</div>
+        <div>" . $row['TEXT'] . "</div>
     </div>
     ";
 }
