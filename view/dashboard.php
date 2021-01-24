@@ -25,7 +25,7 @@
                   </div>
               </div>
               ";
-              array_push($allCommentsId, $row['id']);
+              $allCommentsId[] = $row['id'];
             }?>
             <button type="submit" name="submit" class="btn btn-primary">Approve</button>
         </form>

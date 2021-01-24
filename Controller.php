@@ -34,45 +34,25 @@ class Contoller{
         include 'db.php';
         $formData = $_POST;
 
+
         if (empty($formData['name']) ||
             empty($formData['email']) ||
             empty($formData['text'])) 
         {    
             echo 'Please fill in all fields. Thanks!';
         }else{
-
-            echo 'You added a comment successfully. Thank You for Your time!';
-
-            $db->query('INSERT INTO Comments(name, email, text, approved) VALUES ("'.$formData["name"].'", "'.$formData["email"].'", "'.$formData["text"].'", 0)');
+            include 'db.php';
+            $db->query('INSERT INTO Comments(name, email, text, approved) VALUES ("'.$formData['name'].'", "'.$formData['email'].'", "'.$formData['text'].'", 0)');
+            echo 'You added a comment successfully. Thank You for Your time!
+            <a href="/test/">Go To Homepage</a>
+            ';
         }
     }
 
     public function dashboard(){
-        include 'db.php';
-
-        $allCommentsId = [];
-        $approvedCommentsId = [];
-        $unapprovedComments = [];
-
-        if(isset($_POST['submit']))
-        {
-            
-            foreach($allCommentsId as $commentId){
-                if(isset($_POST[$commentId])){
-                    array_push($approvedCommentsId, $commentId);
-                }
-            }
-                
-            foreach($approvedCommentsId as $approveId){
-                $db->query('UPDATE Comments SET approved = 1 WHERE id = '.$approveId);
-            }
-            echo 'You successfully approved comments!';  
-
-        }else{
-            $unapprovedComments = $db->query('SELECT * from Comments WHERE approved = 0');  
-            include 'view/dashboard.php';                   
-        }
-          
+        include 'db.php';  
+        $unapprovedComments = $db->query('SELECT * from Comments WHERE approved = 0');  
+        include 'view/dashboard.php';                             
     }
 
     public function login(){
@@ -119,11 +99,12 @@ class Contoller{
             foreach($approvedCommentsId as $approveId){
                 $db->query('UPDATE Comments SET approved = 1 WHERE id = '.$approveId);
             }
-            echo 'You successfully approved comments!';  
+            echo 'You successfully approved comments!
+            <a href="/test/index.php?act=dashboard">Go To Dashboard</a>
+            ';  
 
         }
-    }
-    
+    }    
 }
 
 ?>
