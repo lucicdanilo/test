@@ -1,7 +1,12 @@
 <?php 
-
+include 'CommentsModel.php';
 class Contoller{
     public function handler(){
+
+        function __construct(){          
+			$this->model = new CommentsModel();
+        }
+        
         $action = isset($_GET['act']) ? $_GET['act'] : NULL;
 		switch ($action) {
             case 'postComment' :                    
@@ -23,35 +28,31 @@ class Contoller{
     }
 
     public function list(){
-        include 'db.php';
-    
-        $comments = $db->query('SELECT * from Comments WHERE approved = 1');
-        include "view/home.php";  
-                                              
+        $list = new CommentsModel();
+        $comments = $list->listOfComments();
+        include "view/home.php";                                  
     }
 
     public function postComment(){
-        include 'db.php';
         $formData = $_POST;
-
-
         if (empty($formData['name']) ||
             empty($formData['email']) ||
             empty($formData['text'])) 
         {    
             echo 'Please fill in all fields. Thanks!';
         }else{
-            include 'db.php';
-            $db->query('INSERT INTO Comments(name, email, text, approved) VALUES ("'.$formData['name'].'", "'.$formData['email'].'", "'.$formData['text'].'", 0)');
-            echo 'You added a comment successfully. Thank You for Your time!
-            <a href="/test/">Go To Homepage</a>
-            ';
+            $obj->name = $formData['name'];
+            $obj->email = $formData['email'];
+            $obj->text = $formData['text'];
+
+            $postComment = new CommentsModel();
+            $postComment->postComment($obj);
         }
     }
 
     public function dashboard(){
-        include 'db.php';  
-        $unapprovedComments = $db->query('SELECT * from Comments WHERE approved = 0');  
+        $dashboard = new CommentsModel();
+        $unapprovedComments = $dashboard->dashboard();
         include 'view/dashboard.php';                             
     }
 
@@ -79,33 +80,15 @@ class Contoller{
     }
 
     public function approveCommets(){
-        include 'db.php';
 
-        $allCommentsId = [];
-        $approvedCommentsId = [];
-        $unapprovedComments = [];
-
-
-        if(isset($_POST['submit']))
-        {
-            foreach($db->query('SELECT * from Comments WHERE approved = 0') as $row){
-                array_push($allCommentsId, $row['id']);
-            }
-
-            foreach($allCommentsId as $commentId){
-                if(isset($_POST[$commentId])){
-                    array_push($approvedCommentsId, $commentId);
-                }
-            }
-                
-            foreach($approvedCommentsId as $approveId){
-                $db->query('UPDATE Comments SET approved = 1 WHERE id = '.$approveId);
-            }
+        $approveComments = new CommentsModel();
+        $res = $approveComments->approve();
+        if($res == 1){
             echo 'You successfully approved comments!
             <a href="/test/index.php?act=dashboard">Go To Dashboard</a>
             ';  
-
         }
+
     }    
 }
 
