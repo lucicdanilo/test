@@ -12,8 +12,21 @@
     <h1>Wellcome to your dashboard!</h1>
 
     <div class="container">
-        <form action="approveComments.php" method="post">
-            <?php include 'approveComments.php';?>
+        <form action="../test/index.php?act=approveCommets" method="post">
+            <?php 
+            foreach($unapprovedComments as $row){
+              echo "
+              <div class='approveComments'>
+                  <div>" . $row['name'] . "</div>
+                  <div>" . $row['email'] . "</div>
+                  <div>" . $row['TEXT'] . "</div>
+                  <div>Approve
+                      <input class='form-check-input' type='checkbox' name='".$row['id']."'>
+                  </div>
+              </div>
+              ";
+              array_push($allCommentsId, $row['id']);
+            }?>
             <button type="submit" name="submit" class="btn btn-primary">Approve</button>
         </form>
     </div>
