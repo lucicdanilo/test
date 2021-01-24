@@ -12,7 +12,7 @@
     <h1>Wellcome to Admin Page</h1>
 
     <div class="container">
-    <form action="../adminAuth.php" method="post">
+    <form action="../test/index.php?act=dashboard" method="post">
         <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" name="username" id="username" placeholder="Enter username">
