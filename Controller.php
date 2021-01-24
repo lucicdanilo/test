@@ -5,11 +5,7 @@ include 'AdminModel.php';
 
 class Contoller{
     public function handler(){
-
-        function __construct(){          
-			$this->model = new CommentsModel();
-        }
-        
+       
         $action = isset($_GET['act']) ? $_GET['act'] : NULL;
 		switch ($action) {
             case 'postComment' :                    
@@ -82,7 +78,6 @@ class Contoller{
     }
 
     public function approveCommets(){
-
         $approveComments = new CommentsModel();
         $res = $approveComments->approve();
         if($res == 1){
