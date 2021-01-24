@@ -1,5 +1,8 @@
 <?php 
+
 include 'CommentsModel.php';
+include 'AdminModel.php';
+
 class Contoller{
     public function handler(){
 
@@ -24,7 +27,6 @@ class Contoller{
 			default:
                 $this->list();
         }
-            
     }
 
     public function list(){
@@ -63,9 +65,9 @@ class Contoller{
         include "view/admin.php";
            
         if(!empty($_POST['username']) && !empty($_POST['password'])){
-            foreach($db->query('SELECT * from Administrators where username="'. $_POST['username'] . '" and password="'. $_POST['password'] . '"') as $result){
-                $auth = $result["username"];
-            };
+
+            $login = new AdminModel();
+            $auth = $login->login();
 
             if($auth == $_POST["username"]){
                 header('location: /test/index.php?act=dashboard');                
