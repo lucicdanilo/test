@@ -10,20 +10,19 @@
     <title>Store</title>
   </head>
   <body>
-    <h1>Wellcome to our store!</h1>
-    <a href="./index.php?act=login">Admin Page</a>
-
-    <div class="container productsContainer">
+    <a href="./index.php?act=login" class="mx-3" style="float: right;">Admin Page</a>
+    <h1 class="m-3 p-3">Wellcome to our store!</h1>
+    <div class="container productsContainer mt-3">
         <?php include 'Products.php';?>
     </div>
     <div class="container">
+        <h3 class="m-3">Comments:</h3>
         <?php 
         foreach($comments as $row){
             echo "
-            <div class='comments'>
-                <div>" . $row['name'] . "</div>
-                <div>" . $row['email'] . "</div>
-                <div>" . $row['TEXT'] . "</div>
+            <div class='comments p-3 '>
+                <div>" . $row['name'] . "<span class='commentMail'>" . $row['email'] . "</span></div>
+                <div class='commentText'>" . $row['TEXT'] . "</div>
             </div>
             ";
         }
@@ -31,7 +30,7 @@
         ?>
     </div>
 
-    <div class="container">
+    <div class="container px-5 m-5" style="width: 50%">
         <form action="../test/index.php?act=postComment" method="post" name="postComment">
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>

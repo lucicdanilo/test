@@ -9,8 +9,8 @@
     <title>Store</title>
   </head>
   <body>
+    <a href="./" class="mx-3" style="float: right;">Homepage</a>
     <h1>Wellcome to your dashboard!</h1>
-
     <div class="container">
         <form action="../test/index.php?act=approveCommets" method="post">
             <?php 

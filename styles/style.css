@@ -3,4 +3,20 @@
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+.comments{
+    background-color: rgb(254 255 151);
+    margin: 2%;
+    border-radius: 10px;
+}
+
+.commentMail{
+    float: right;
+    font-style: italic;
+    font-size: small;
+}
+
+.commentText{
+    font-size: larger;
+}
+
 

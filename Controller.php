@@ -59,21 +59,19 @@ class Contoller{
         include 'db.php';   
         $auth = "";
 
-        if(empty($_POST['username']) || empty($_POST['password'])){
-            echo 'Please fill in input fields!';
-        }else{
+        include "view/admin.php";
+           
+        if(!empty($_POST['username']) && !empty($_POST['password'])){
             foreach($db->query('SELECT * from Administrators where username="'. $_POST['username'] . '" and password="'. $_POST['password'] . '"') as $result){
                 $auth = $result["username"];
             };
 
             if($auth == $_POST["username"]){
-                header('location: /test/index.php?act=approveCommets');
+                header('location: /test/index.php?act=dashboard');                
             }else{
                 echo 'Wrong username or password!';
             }
         }
-
-        include "view/admin.php";
     }
 
     public function approveCommets(){
