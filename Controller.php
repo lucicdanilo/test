@@ -69,7 +69,11 @@ class Contoller{
             if($auth == $_POST["username"]){
                 header('location: /test/index.php?act=dashboard');                
             }else{
-                echo 'Wrong username or password!';
+                echo '
+                <div class="alert alert-danger m-3" role="alert">
+                    Wrong username or password!
+                </div>              
+                ';
             }
         }
     }

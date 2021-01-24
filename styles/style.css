@@ -19,4 +19,21 @@
     font-size: larger;
 }
 
+.approveComments{
+    background-color: yellowgreen;
+    border-radius: 10px;
+}
+
+.approveCommentsEmail{
+    float: right;
+}
+
+.approveCommentsText{
+    font-weight: bold;
+}
+
+.approveCheckbox{
+    font-weight: bold;
+}
+
 

@@ -31,6 +31,7 @@
     </div>
 
     <div class="container px-5 m-5" style="width: 50%">
+        <h3 class="m-3">Leave comment:</h3>
         <form action="../test/index.php?act=postComment" method="post" name="postComment">
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>
